@@ -5,13 +5,13 @@ workflows:
   build:
     jobs:
       - path-filtering/filter:
-          base-revision: master
+          base-revision: main
           config-path: .circleci/frontend.yml
           mapping:
             - path: frontend
               job: build
       - path-filtering/filter:
-          base-revision: master
+          base-revision: main
           config-path: .circleci/backend.yml
           mapping:
             - path: backend
