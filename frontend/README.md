@@ -10,4 +10,4 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-**Note** Adding this to test if this only triggers circle ci for frontend
+**Note** Should build frontend
