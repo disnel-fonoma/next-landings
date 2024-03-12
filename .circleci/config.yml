@@ -11,22 +11,19 @@ parameters:
     type: boolean
     default: false
 
-jobs:
-  check-updated-files:
-    docker:
-      - image: circleci/python:3.7
-    steps:
-      - checkout
-      - path-filtering/filter:
-          name: check-updated-files
-          mapping: |
-            frontend/.* run_frontend_build true
-            backend/.* run_backend_build true
-          base-revision: main
-          config-path: .circleci/continue_config.yml
-
 workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - check-updated-files
+      - check-updated-files:
+        docker:
+          - image: circleci/python:3.7
+        steps:
+          - checkout
+          - path-filtering/filter:
+              name: check-updated-files
+              mapping: |
+                frontend/.* run_frontend_build true
+                backend/.* run_backend_build true
+              base-revision: main
+              config-path: .circleci/continue_config.yml
