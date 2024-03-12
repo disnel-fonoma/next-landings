@@ -1,0 +1,52 @@
+version: 2.1
+
+parameters:
+ run_frontend_build:
+    type: boolean
+    default: false
+ run_backend_build:
+    type: boolean
+    default: false
+
+jobs:
+ build_frontend:
+    docker:
+      - image: circleci/node:20
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            cd frontend
+            npm install
+      - run:
+          name: Build frontend
+          command: |
+            cd frontend
+            npm run build
+
+ build_backend:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            cd backend
+            npm install
+      - run:
+          name: Build backend
+          command: |
+            cd backend
+            npm run build
+
+workflows:
+ version: 2
+ build_and_deploy:
+    when: << pipeline.parameters.run_frontend_build >>
+    jobs:
+      - build_frontend
+    when: << pipeline.parameters.run_backend_build >>
+    jobs:
+      - build_backend

@@ -1,18 +1,32 @@
 version: 2.1
-setup: true
+
 orbs:
   path-filtering: circleci/path-filtering@1.0.0
+
+parameters:
+  run_frontend_build:
+    type: boolean
+    default: false
+  run_backend_build:
+    type: boolean
+    default: false
+
+jobs:
+  check-updated-files:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - path-filtering/filter:
+          name: check-updated-files
+          mapping: |
+            frontend/.* run_frontend_build true
+            backend/.* run_backend_build true
+          base-revision: main
+          config-path: .circleci/continue_config.yml
+
 workflows:
-  build:
+  version: 2
+  build_and_deploy:
     jobs:
-      - path-filtering/filter:
-          base-revision: main
-          config-path: frontend/.circleci/frontend.yml
-          mapping: |
-            frontend/.* build true
-      - path-filtering/filter:
-          base-revision: main
-          config-path: backend/.circleci/backend.yml
-          mapping: |
-            backend/.* build true
-          
+      - check-updated-files
