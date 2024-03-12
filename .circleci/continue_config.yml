@@ -1,15 +1,15 @@
 version: 2.1
 
 parameters:
- run_frontend_build:
+  run_frontend_build:
     type: boolean
     default: false
- run_backend_build:
+  run_backend_build:
     type: boolean
     default: false
 
 jobs:
- build_frontend:
+  build_frontend:
     docker:
       - image: circleci/node:20
     steps:
@@ -25,7 +25,7 @@ jobs:
             cd frontend
             npm run build
 
- build_backend:
+  build_backend:
     docker:
       - image: circleci/python:3.7
     steps:
@@ -42,11 +42,10 @@ jobs:
             npm run build
 
 workflows:
- version: 2
- build_and_deploy:
-    when: << pipeline.parameters.run_frontend_build >>
+  version: 2
+  build_and_deploy:
     jobs:
-      - build_frontend
-    when: << pipeline.parameters.run_backend_build >>
-    jobs:
-      - build_backend
+      - build_frontend:
+        when: << pipeline.parameters.run_frontend_build >>
+      - build_backend:
+        when: << pipeline.parameters.run_backend_build >>
