@@ -1,10 +1,13 @@
 version: 2.1
+jobs:
+  build:  
+    steps:
+      - run:
+          name: Build frontend
+          command: |
+            echo "Building frontend"
+
 workflows:
-  build:
+  workflow:
     jobs:
-      - build:
-        steps:
-          - run:
-              name: Build frontend
-              command: | 
-                echo "Building frontend"
+      build
