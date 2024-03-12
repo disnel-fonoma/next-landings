@@ -30,6 +30,6 @@ Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-
 npm run build
 ```
 
-**Note** Should build backend only since we are not doing changes on frontend
+**Note** Should build backend only since we are not doing changes on frontend 15:30:21
 
 
