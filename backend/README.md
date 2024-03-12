@@ -30,6 +30,6 @@ Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-
 npm run build
 ```
 
-**Note** Should NOT NOT NOT deploy
+**Note** will not deploy
 
 
