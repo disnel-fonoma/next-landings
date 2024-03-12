@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the directory to check for changes
-NEXTJS_DIR="."
+NEXTJS_DIR="./frontend"
 
 # Check if there are any changes in the Next.js directory
 if git diff HEAD^ HEAD -- $NEXTJS_DIR; then
