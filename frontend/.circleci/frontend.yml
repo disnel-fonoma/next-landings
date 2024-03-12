@@ -3,5 +3,8 @@ workflows:
   build:
     jobs:
       - build:
-          command: | 
-            echo "Building frontend"
+        steps:
+          - run:
+              name: Build frontend
+              command: | 
+                echo "Building frontend"
