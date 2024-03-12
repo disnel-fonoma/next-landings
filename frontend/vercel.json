@@ -1,8 +1,9 @@
 {
-    "git": {
-       "deploymentEnabled": {
-         "main": false
-       }
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
     }
-   }
-   
+  ],
+  "ignoredBuildStep": "./check-changes.sh"
+}
