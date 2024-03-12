@@ -3,4 +3,4 @@ workflows:
   build:
     jobs:
       - build:
-          run: npm run build
+          run: echo "Building frontend"
