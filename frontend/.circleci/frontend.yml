@@ -3,4 +3,4 @@ workflows:
   build:
     jobs:
       - build:
-          npm run build
+          run: npm run build
