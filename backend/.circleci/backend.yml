@@ -3,4 +3,4 @@ workflows:
   build:
     jobs:
       - build:
-          echo "Building frontend"
+          run: echo "Building backend"
