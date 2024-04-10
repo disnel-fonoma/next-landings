@@ -15,6 +15,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "disnel@fonoma.com"
+          git config --global user.name "GitHub Action"
+
       - name: Merge to Stage
         run: |
           git fetch origin stage:stage
