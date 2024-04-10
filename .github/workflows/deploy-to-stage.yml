@@ -1,0 +1,25 @@
+name: Auto Merge to Stage
+
+on:
+  push:
+    branches:
+      - '**'
+    branches-ignore:
+      - 'main'
+      - 'stage'
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Merge to Stage
+        run: |
+          git fetch origin stage:stage
+          git checkout stage
+          git merge ${{ github.ref_name }} --no-ff --no-edit
+          git push origin stage
