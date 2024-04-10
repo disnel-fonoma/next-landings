@@ -2,8 +2,6 @@ name: Auto Merge to Stage
 
 on:
   push:
-    branches:
-      - '**'
     branches-ignore:
       - 'main'
       - 'stage'
