@@ -3,8 +3,8 @@ name: Auto Merge to Stage
 on:
   push:
     branches-ignore:
-      - 'main'
-      - 'stage'
+      - "main"
+      - "stage"
 
 jobs:
   automerge:
@@ -25,4 +25,4 @@ jobs:
           git fetch origin stage:stage
           git checkout stage
           git merge ${{ github.ref_name }} --no-ff --no-edit
-          git push origin stage
+          git -c http.extraheader="AUTHORIZATION: bearer ${{ secrets.ACTIONS }}" push origin stage
