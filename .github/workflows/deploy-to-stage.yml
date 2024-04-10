@@ -18,7 +18,7 @@ jobs:
       - name: Configure Git
         run: |
           git config --global user.email "disnel@fonoma.com"
-          git config --global user.name "GitHub Action"
+          git config --global user.name "GitHub Action Reloaded"
 
       - name: Merge to Stage
         run: |
